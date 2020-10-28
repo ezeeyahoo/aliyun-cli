@@ -12,6 +12,13 @@ branches:
     - master
     - pre-release
     - test_ppc64le
+    
+jobs:
+  include:
+    - arch: ppc64le
+      go: 1.14.x
+    - arch: ppc64le
+      go: 1.12.x
 
 before_install:
   - sudo apt-get install -y jq

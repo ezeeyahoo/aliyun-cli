@@ -18,7 +18,7 @@ jobs:
     - arch: ppc64le
       go: 1.14.x
     - arch: ppc64le
-      go: 1.12.x
+      go: 1.15.x
 
 before_install:
   - sudo apt-get install -y jq
@@ -26,9 +26,7 @@ before_install:
 install:
   # To make it work on travis-ci.com  
   - mkdir -p "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/
-  # To make it work on travis-ci.com  
-  - echo $GOROOT
-  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi
+  - mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/
   - make build
   - sudo cp out/aliyun /usr/local/bin
 

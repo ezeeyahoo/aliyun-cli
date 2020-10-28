@@ -11,6 +11,7 @@ branches:
   only:
     - master
     - pre-release
+    - test_ppc64le
 
 before_install:
   - sudo apt-get install -y jq

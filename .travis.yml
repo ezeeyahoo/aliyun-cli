@@ -23,7 +23,8 @@ jobs:
 before_install:
   - sudo apt-get install -y jq
   # To make it work on travis-ci.com  
-  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then mv ../aliyun-cli /go/pkg/mod/cache/download/github.com/aliyun/; fi
+  echo $GOPATH
+  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi
 
 
 install:

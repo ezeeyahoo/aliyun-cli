@@ -22,13 +22,13 @@ jobs:
 
 before_install:
   - sudo apt-get install -y jq
-  # To make it work on travis-ci.com  
-  - echo $GOPATH
-  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then find / -name aliyun-openapi-meta 2>/dev/null; mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi
-
 
 install:
-  - make build
+  # To make it work on travis-ci.com  
+  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then find / -name aliyun-openapi-meta 2>/dev/null; mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi  
+  - make build || true
+  # To make it work on travis-ci.com  
+  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then find / -name aliyun-openapi-meta 2>/dev/null; mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi
   - sudo cp out/aliyun /usr/local/bin
 
 notifications:

@@ -24,7 +24,7 @@ before_install:
   - sudo apt-get install -y jq
   # To make it work on travis-ci.com  
   - echo $GOPATH
-  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi
+  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then find / -name aliyun-openapi-meta; mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi
 
 
 install:

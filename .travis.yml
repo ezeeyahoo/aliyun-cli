@@ -25,6 +25,10 @@ notifications:
     email: false
     on_success: change
     on_failure: always
+    
+before_script:
+  # To make it work on travis-ci.com  
+  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then mv ../aliyun-cli /go/pkg/mod/cache/download/github.com/aliyun/; fi
 
 script:
   - go vet ./cli/... ./command/... ./config/... ./i18n/... ./main/... ./openapi/... ./oss/... ./resource/...

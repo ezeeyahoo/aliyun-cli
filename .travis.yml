@@ -25,9 +25,11 @@ before_install:
 
 install:
   # To make it work on travis-ci.com  
-  - make build || true
+  - mkdir -p "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/
   # To make it work on travis-ci.com  
-  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then find / -name aliyun-openapi-meta 2>/dev/null; mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi
+  - echo $GOROOT
+  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then mv ../aliyun-cli "$GOPATH"/pkg/mod/cache/download/github.com/aliyun/; fi
+  - make build
   - sudo cp out/aliyun /usr/local/bin
 
 notifications:
